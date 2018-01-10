@@ -4,26 +4,19 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import App from './components/app';
+// No central component since we are using React-Router
+// import App from './components/app';
 import reducers from './reducers';
 
+import PostsIndex from './components/posts_index';
+
 const createStoreWithMiddleware = applyMiddleware()(createStore);
-
-class Hello extends React.Component {
-  render() { return <div>Hello!</div>; }
-}
-
-class Goodbye extends React.Component {
-  render() { return <div>Goodbye!</div>; }
-}
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
-        Header
-        <Route path="/hi" component={Hello} />
-        <Route path="/bye" component={Goodbye} />
+        <Route path="/PostsIndex" component={PostsIndex} />
       </div>
     </BrowserRouter>
   </Provider>
